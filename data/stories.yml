@@ -2,29 +2,33 @@ version: "3.1"
 
 stories:
 
-- story: happy path
+- story: give name story 1
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: mood_great
-  - action: utter_happy
+  - action: utter_ask_food
+  - intent: give_food
+    entities:
+    - food: pizza
+  - slot_was_set:
+    - food: pizza
 
-- story: sad path 1
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: affirm
-  - action: utter_happy
+  - action: utter_ask_flavor
+  - intent: give_flavor
+    entities:
+    - flavor: mussarela
+  - slot_was_set:
+    - flavor: mussarela
 
-- story: sad path 2
-  steps:
-  - intent: greet
-  - action: utter_greet
-  - intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - intent: deny
+  - action: utter_ask_size
+  - intent: give_size
+    entities:
+    - size: grande
+  - slot_was_set:
+    - size: grande
+
+  - action: utter_remember
+  - intent: repeat_order
+  - action: action_say_food
+  - intent: goodbye
   - action: utter_goodbye

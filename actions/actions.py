@@ -1,27 +1,25 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
+from typing import Any, Text, Dict, List
+
+from rasa_sdk.events import SlotSet
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
 
 
-# This is a simple example for a custom action which utters "Hello World!"
+class ActionSayFood(Action):
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+    def name(self) -> Text:
+        return "action_say_food"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+
+        food = tracker.get_slot("food")
+        flavor = tracker.get_slot("flavor")
+        size = tracker.get_slot("size")
+
+        if not food:
+            dispatcher.utter_message(text="Você ainda não realizou um pedido.")
+        else:
+            dispatcher.utter_message(text=f"Seu pedido: {food} {size} de {flavor}!")
+        return []

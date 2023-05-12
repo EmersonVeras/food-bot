@@ -1,91 +1,80 @@
 version: "3.1"
-
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-
+    - oi
+    - olá
+    - E ai
+    - bom dia
+    - boa noite
+    - boa tarde
+    - ei
 - intent: goodbye
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-
+    - boa tarde
+    - tchau
+    - adeus
+    - até mais tarde
+    - boa noite
+    - adeus
+    - tenha um bom dia
+    - tenha uma boa tarde
+    - tenha um boa noite
+    - até logo
+    - tchau tchau
+    - até mais tarde
+    - obrigado, tchau
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-
+    - sim
+    - s
+    - isso
+    - isso mesmo
+    - esse mesmo
+    - correto
+    - claro
+    - exatamente
+    - exato
 - intent: deny
   examples: |
-    - no
+    - não
     - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
+    - nunca
+    - eu acho que não
+    - creio que não
+    - não mesmo
+    - de jeito nenhum
 - intent: bot_challenge
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - você é bot?
+    - você é humano?
+    - estou falando com um bot?
+    - estou falando com um humano?
+- intent: repeat_order
+  examples: |
+    - qual é o meu pedido?
+    - o que eu pedi?
+    - você lembra o que eu pedi?
+    - não lembro quais itens pedi
+    - poderia repetir os meus pedidos?
+    - quais os meus pedidos ?
+- intent: give_food
+  examples: |
+    - eu quero uma [pizza](food)
+    - [pizza](food)
+    - quero uma [pizza](food)
+    - gostaria de uma [pizza](food)
+    - eu quero pedir uma [pizza](food)
+    - uma [pizza](food)
+
+- intent: give_flavor
+  examples: |
+    - [calabresa](flavor)
+    - [mussarela](flavor)
+    - [portuguesa](flavor)
+
+- intent: give_size
+  examples: |
+    - [grande](size)
+    - [media](size)
+    - [pequena](size)

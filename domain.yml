@@ -1,34 +1,71 @@
-version: "3.1"
-
-intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
-
-responses:
-  utter_greet:
-  - text: "Hey! How are you?"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
-
+version: '3.1'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+intents:
+- repeat_order
+- give_food
+- give_flavor
+- give_size
+- goodbye
+- greet
+- mood_great
+- repeat_name
+- affirm
+- deny
+- mood_unhappy
+- bot_challenge
+entities:
+- food
+- flavor
+- size
+slots:
+  food:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: food
+  flavor:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: flavor
+  size:
+    type: text
+    influence_conversation: true
+    mappings:
+    - type: from_entity
+      entity: size
+responses:
+  utter_greet:
+  - text: Olá, nós somos o restaurante Bucho Cheio! Você gostaria de pedir algo? 🍕🍔
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_happy:
+  - text: Great, carry on!
+  utter_goodbye:
+  - text: Bye
+  utter_iamabot:
+  - text: I am a bot, powered by Rasa.
+  utter_ask_food:
+  - text: O que gostaria de pedir? 🤔
+  utter_ask_flavor:
+  - text: Qual o sabor? 🤔
+  utter_ask_size:
+  - text: Qual o tamanho? 🤔
+  utter_remember:
+  - text: Obrigado, seu pedido foi anotado 😃😃
+actions:
+- action_say_food
+- utter_ask_food
+- utter_ask_flavor
+- utter_ask_size
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_remember
